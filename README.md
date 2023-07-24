@@ -13,6 +13,7 @@ The script will open a new Notepad++ window and run its autocomplete features in
 
 *Disclaimer:* this script is highly personalized for my workflow, that's why some buttons may be turned off :p (e.g. Capslock, Win).
 You can easily modify the disabled keys, Hotkeys and Hotstrings by editing ``npp_unity.ahk`` file's contents to your liking.
+
 If you feel lost in editing the script, check the AHK documentation: https://www.autohotkey.com/docs/v2/
 
 
