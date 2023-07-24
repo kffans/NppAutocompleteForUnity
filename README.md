@@ -7,7 +7,7 @@ How to run the ``npp_unity.ahk`` script:
 3. Launch AutoHotkey Dash, go into "Editor Settings" and in the Command Line textarea, type in: ``Notepad++.exe "%L"``
 4. Double-click the ``npp_unity.ahk`` script.
 
-The script will open a new Notepad++ window and run its autocomplete features in the background.
+The script will open a new Notepad++ window and run its autocomplete features in the background. If you have Notepad's default autocomplete on and it clashes with this script, you can turn it off in ``Settings->Autocomplete`` and uncheck for functions and words.
 
 *Test if it works:* in Notepad++, type in ``sta`` and then a Tab key, you should see ``void Start(){}`` function fully typed out.
 
