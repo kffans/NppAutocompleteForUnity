@@ -28,10 +28,15 @@ RCtrl::Send("{Home}^{Right}")
 
 
 ;---HOTSTRINGS
-:*:for`t::for(int i=0; i<; i{+}{+}){Left 6}
-:*:wh`t::while(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
 :*:if`t::if(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
 :*:i`t::if(){Left}
+:*:elif`t::else if(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
+:*:eli`t::else if(){Left}
+:*:el`t::else{{}{Enter 2}{}}{Up}
+:*:e`t::else{Enter}
+
+:*:for`t::for(int i=0; i<; i{+}{+}){Left 6}
+:*:wh`t::while(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
 :*:{`t::{{}{Enter 2}{}}{Up}
 :*:/`t::/{*}{Enter}{*}/
 
@@ -39,7 +44,11 @@ RCtrl::Send("{Home}^{Right}")
 :*:sta`t::void Start(){{}{Enter 2}{}}{Up}
 :*:upd`t::void Update(){{}{Enter 2}{}}{Up}
 :*:fix`t::void FixedUpdate(){{}{Enter 2}{}}{Up}
+:*:int`t::public interface I{Enter}{{}{Enter 2}{}}{Up 3}{End}
+:*:str`t::struct {{}{Enter 2}{}}{Up 2}{End}{Left}
 :*:ie`t::IEnumerator (){{}{Enter 2}{}}{Up 2}{End}{Left 3}
+:*:cl`t::class  : MonoBehaviour{Enter}{{}{Enter 2}{}}{Up 3}{End}{Left 16}
+:*:c`t::class {{}{Enter 2}{}}{Up 2}{End}{Left}
 
 :*:rand`t::UnityEngine.Random.Range(,){Left 2}
 :*:inst`t::Instantiate(,);{Left 3}
@@ -52,6 +61,7 @@ RCtrl::Send("{Home}^{Right}")
 :*:pro`t::protected
 :*:pr`t::private
 :*:p`t::public
+:*:ab`t::abstract
 :*:s`t::static
 :*:n`t::null
 :*:t`t::this{.}
@@ -60,6 +70,7 @@ RCtrl::Send("{Home}^{Right}")
 :*:pos`t::position
 :*:re`t::RectTransform
 :*:tr`t::transform
+:*:ph`t::Physics{.}
 :*:g`t::gameObject
 :*:v`t::Vector
 :*:f`t::float
