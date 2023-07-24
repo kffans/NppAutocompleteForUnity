@@ -4,7 +4,7 @@ An AHK (AutoHotkey) script to help you write C# code for Unity in Notepad++.
 How to run the ``npp_unity.ahk`` script:
 1. Download Notepad++ here: https://notepad-plus-plus.org/downloads/
 2. Download AHK v2 here:    https://www.autohotkey.com/download/ahk-v2.exe
-3. Launch AutoHotkey Dash, go into "Editor Settings" and in the Command Line textarea, type in: ``Notepad++.exe "%L"``
+3. Launch AutoHotkey Dash, go into "Editor Settings" and in the Command Line textarea, type: ``Notepad++.exe "%L"``
 4. Double-click the ``npp_unity.ahk`` script.
 
 The script will open a new Notepad++ window and run its autocomplete features in the background.
