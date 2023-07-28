@@ -35,18 +35,31 @@ RCtrl::Send("{Home}^{Right}")
 :*:el`t::else{{}{Enter 2}{}}{Up}
 :*:e`t::else{Enter}
 
+:*:fore`t::foreach( in ){{}{Enter 2}{}}{Up 2}{End}{Left 6}
 :*:for`t::for(int i=0; i<; i{+}{+}){Left 6}
 :*:wh`t::while(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
 :*:{`t::{{}{Enter 2}{}}{Up}
 :*:/`t::/{*}{Enter}{*}/
 
+:*:[req`t::[RequireComponent(typeof())]{Left 3}
+:*:[sel`t::[SelectionBase]
+:*:[ss`t::[Serializable]        ;make a public struct serializable
+:*:[sf`t::[SerializeField]      ;serialize a serializable struct element OR a private field
+:*:[he`t::[Header("")]{Left 3}
+:*:[hi`t::[HideInInspector]
+
 :*:fun`t::void (){{}{Enter 2}{}}{Up 2}{End}{Left 3}
+:*:awa`t::void Awake(){{}{Enter 2}{}}{Up}
 :*:sta`t::void Start(){{}{Enter 2}{}}{Up}
 :*:upd`t::void Update(){{}{Enter 2}{}}{Up}
 :*:fix`t::void FixedUpdate(){{}{Enter 2}{}}{Up}
+:*:lat`t::void LateUpdate(){{}{Enter 2}{}}{Up}
 :*:int`t::public interface I{Enter}{{}{Enter 2}{}}{Up 3}{End}
 :*:str`t::struct {{}{Enter 2}{}}{Up 2}{End}{Left}
+:*:en`t::enum {{}{Enter 2}{}}{Up 2}{End}{Left}
 :*:ie`t::IEnumerator (){{}{Enter 2}{}}{Up 2}{End}{Left 3}
+
+:*:cls`t::class  : ScriptableObject{Enter}{{}{Enter 2}{}}{Up 3}{End}{Left 19}
 :*:cl`t::class  : MonoBehaviour{Enter}{{}{Enter 2}{}}{Up 3}{End}{Left 16}
 :*:c`t::class {{}{Enter 2}{}}{Up 2}{End}{Left}
 
@@ -62,11 +75,19 @@ RCtrl::Send("{Home}^{Right}")
 :*:pr`t::private
 :*:p`t::public
 :*:ab`t::abstract
+:*:vi`t::virtual
+:*:ov`t::override
 :*:s`t::static
 :*:n`t::null
 :*:t`t::this{.}
 
+:*:timef`t::Time.fixedDeltaTime
+:*:timed`t::Time.deltaTime
+:*:text`t::TextMeshProUGUI
 :*:rig`t::Rigidbody2D
+:*:raw`t::RawImage
+:*:mon`t::MonoBehaviour
+:*:scr`t::ScriptableObject
 :*:pos`t::position
 :*:re`t::RectTransform
 :*:tr`t::transform
