@@ -10,6 +10,19 @@ Run "notepad++"
 
 
 
+;---CANCEL HOTSTRINGS
+global ctrlz := 4
+LoopCtrlZ(){
+	global ctrlz
+	Send("^{z " ctrlz "}")
+	ctrlz := 1
+}
+SetCtrlZ(x){
+	global ctrlz := x
+}
+
+
+
 ;---DISABLED KEYS
 Capslock::return
 LWin::return
@@ -21,25 +34,53 @@ RWin::return
 LShift & `::Send("+``+``{Backspace}")
 LCtrl & Backspace::Send("^{i}{Backspace 2}")
 LCtrl & g::Send("^{h}")
+^!z::LoopCtrlZ()
+
+LCtrl & q::SetCtrlZ(6)
 
 RShift::Send("{End}")
 RCtrl::Send("{Home}^{Right}")
 
 
 
-;---HOTSTRINGS
-:*:if`t::if(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
-:*:i`t::if(){Left}
-:*:elif`t::else if(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
-:*:eli`t::else if(){Left}
-:*:el`t::else{{}{Enter 2}{}}{Up}
-:*:e`t::else{Enter}
 
-:*:fore`t::foreach( in ){{}{Enter 2}{}}{Up 2}{End}{Left 6}
-:*:for`t::for(int i=0; i<; i{+}{+}){Left 6}
-:*:wh`t::while(){{}{Enter 2}{}}{Up 2}{End}{Left 2}
-:*:{`t::{{}{Enter 2}{}}{Up}
-:*:/`t::/{*}{Enter}{*}/
+;---HOTSTRINGS
+Hotstring("EndChars", "")
+; :*:send`t::Send("{End}"){Space 3},{Space 3}SetCtrlZ(){Left}    ;used for setting ctrlz for a hotstring
+
+
+:*X:if`t::Send("if(){{}{Enter 2}{}}{Up 2}{End}{Left 2}")         ,SetCtrlZ(6)
+ :*:i`t::if(){Left}
+:*X:elif`t::Send("else if(){{}{Enter 2}{}}{Up 2}{End}{Left 2}")  ,SetCtrlZ(6)
+ :*:eli`t::else if(){Left}
+:*X:el`t::Send("else{{}{Enter 2}{}}{Up}")                        ,SetCtrlZ(6)
+:*X:e`t::Send("else{Enter}")                                     ,SetCtrlZ(2)
+
+:*X:fore`t::Send("foreach( in ){{}{Enter 2}{}}{Up 2}{End}{Left 6}")             ,SetCtrlZ(6)
+:*X:for`t::Send("for(int i=0; i<; i{+}{+}){{}{Enter 2}{}}{Up 2}{End}{Left 7}")  ,SetCtrlZ(6)
+ :*:fo`t::for(int i=0; i<; i{+}{+}){Left 6}
+:*X:whi`t::Send("while(){{}{Enter 2}{}}{Up 2}{End}{Left 2}")                    ,SetCtrlZ(6)
+ :*:wh`t::while(){Left}
+ 
+ :*?://`t:://{@}CHANGE{Space}
+:*?X:/`t::Send("/{*}{Enter}{*}/")                             ,SetCtrlZ(3)
+:*?X:{ `t::Send("{{}{Enter}{}}^+{Down}{Up}{Home}{Tab}{End}")  ,SetCtrlZ(6)
+ :*?:{`t::{{}{Enter 2}{}}{Up}
+
+:*X:fun`t::Send("void (){{}{Enter 2}{}}{Up 2}{End}{Left 3}")            ,SetCtrlZ(6)
+:*X:awa`t::Send("void Awake(){{}{Enter 2}{}}{Up}")                      ,SetCtrlZ(6)
+:*X:sta`t::Send("void Start(){{}{Enter 2}{}}{Up}")                      ,SetCtrlZ(6)
+:*X:upd`t::Send("void Update(){{}{Enter 2}{}}{Up}")                     ,SetCtrlZ(6)
+:*X:fix`t::Send("void FixedUpdate(){{}{Enter 2}{}}{Up}")                ,SetCtrlZ(6)
+:*X:lat`t::Send("void LateUpdate(){{}{Enter 2}{}}{Up}")                 ,SetCtrlZ(6)
+:*X:int`t::Send("public interface I{Enter}{{}{Enter 2}{}}{Up 3}{End}")  ,SetCtrlZ(8)
+:*X:str`t::Send("struct {{}{Enter 2}{}}{Up 2}{End}{Left}")              ,SetCtrlZ(6)
+:*X:en`t::Send("enum {{}{Enter 2}{}}{Up 2}{End}{Left}")                 ,SetCtrlZ(6)
+:*X:ie`t::Send("IEnumerator (){{}{Enter 2}{}}{Up 2}{End}{Left 3}")      ,SetCtrlZ(6)
+
+:*X:cls`t::Send("class  : ScriptableObject{Enter}{{}{Enter 2}{}}{Up 3}{End}{Left 19}")  ,SetCtrlZ(8)
+:*X:cl`t::Send("class  : MonoBehaviour{Enter}{{}{Enter 2}{}}{Up 3}{End}{Left 16}")      ,SetCtrlZ(8)
+:*X:c`t::Send("class {{}{Enter 2}{}}{Up 2}{End}{Left}")                                 ,SetCtrlZ(6)
 
 :*:[req`t::[RequireComponent(typeof())]{Left 3}
 :*:[sel`t::[SelectionBase]
@@ -48,26 +89,12 @@ RCtrl::Send("{Home}^{Right}")
 :*:[he`t::[Header("")]{Left 3}
 :*:[hi`t::[HideInInspector]
 
-:*:fun`t::void (){{}{Enter 2}{}}{Up 2}{End}{Left 3}
-:*:awa`t::void Awake(){{}{Enter 2}{}}{Up}
-:*:sta`t::void Start(){{}{Enter 2}{}}{Up}
-:*:upd`t::void Update(){{}{Enter 2}{}}{Up}
-:*:fix`t::void FixedUpdate(){{}{Enter 2}{}}{Up}
-:*:lat`t::void LateUpdate(){{}{Enter 2}{}}{Up}
-:*:int`t::public interface I{Enter}{{}{Enter 2}{}}{Up 3}{End}
-:*:str`t::struct {{}{Enter 2}{}}{Up 2}{End}{Left}
-:*:en`t::enum {{}{Enter 2}{}}{Up 2}{End}{Left}
-:*:ie`t::IEnumerator (){{}{Enter 2}{}}{Up 2}{End}{Left 3}
-
-:*:cls`t::class  : ScriptableObject{Enter}{{}{Enter 2}{}}{Up 3}{End}{Left 19}
-:*:cl`t::class  : MonoBehaviour{Enter}{{}{Enter 2}{}}{Up 3}{End}{Left 16}
-:*:c`t::class {{}{Enter 2}{}}{Up 2}{End}{Left}
-
 :*:rand`t::UnityEngine.Random.Range(,){Left 2}
 :*:inst`t::Instantiate(,);{Left 3}
 :*:cor`t::StartCoroutine(());{Left 4}
 :*:deb`t::Debug.Log();{Left 2}
 :*:get`t::GetComponent<>(){Left 3}
+:*:dic`t::Dictionary<,>{Left 2}
 :*:gf`t::GameObject.Find(""){Left 2}
 :*:y`t::yield return Ev.Wait();{Left 2}
 
@@ -79,19 +106,21 @@ RCtrl::Send("{Home}^{Right}")
 :*:ov`t::override
 :*:s`t::static
 :*:n`t::null
-:*:t`t::this{.}
+:*:t`t::this.
 
 :*:timef`t::Time.fixedDeltaTime
 :*:timed`t::Time.deltaTime
 :*:text`t::TextMeshProUGUI
+:*:pos`t::position
+:*:loc`t::localPosition
+:*:len`t::Length
 :*:rig`t::Rigidbody2D
 :*:raw`t::RawImage
 :*:mon`t::MonoBehaviour
 :*:scr`t::ScriptableObject
-:*:pos`t::position
 :*:re`t::RectTransform
 :*:tr`t::transform
-:*:ph`t::Physics{.}
+:*:ph`t::Physics.
 :*:g`t::gameObject
 :*:v`t::Vector
 :*:f`t::float
