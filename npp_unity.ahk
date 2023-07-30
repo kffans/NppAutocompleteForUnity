@@ -6,20 +6,23 @@ Run "notepad++"
 #HotIf WinActive("ahk_exe NOTEPAD++.EXE")
 
 ; USEFUL non-ahk hotkeys: Ctrl+Shift+Up/Down   ,   Shift+Up/Down   ,   Ctrl+Left/Right   ,   Ctrl+Shift+F
-;                         Ctrl+D , Ctrl+I , Ctrl+H , Ctrl+F , F11 (Full Focus!)
+;                         Ctrl+D , Ctrl+I , Ctrl+H , Ctrl+F
+;                         F11 (Full Focus!)
+;                         Ctrl+[/] (Fast scrolling!)
 
 
 
-;---CANCEL HOTSTRINGS
-global ctrlz := 4
+;---CANCEL HOTSTRINGS: FUNCTIONS AND HOTKEY
+global ctrlz := 1
 LoopCtrlZ(){
 	global ctrlz
 	Send("^{z " ctrlz "}")
 	ctrlz := 1
 }
-SetCtrlZ(x){
+SetCtrlZ(x){    ;how many times should it click Ctrl+Z until snippet/hotstring disappear
 	global ctrlz := x
 }
+^!z::LoopCtrlZ()   ;Ctrl+Alt+Z
 
 
 
@@ -31,22 +34,19 @@ RWin::return
 
 
 ;---HOTKEYS
-LShift & `::Send("+``+``{Backspace}")
+LShift & `::Send("+``+``{Backspace}")    ;make single tilde, but writing accents won't work
 LCtrl & Backspace::Send("^{i}{Backspace 2}")
 LCtrl & g::Send("^{h}")
-^!z::LoopCtrlZ()
-
-LCtrl & q::SetCtrlZ(6)
 
 RShift::Send("{End}")
-RCtrl::Send("{Home}^{Right}")
-
+RCtrl::Send("{Home}")
 
 
 
 ;---HOTSTRINGS
 Hotstring("EndChars", "")
-; :*:send`t::Send("{End}"){Space 3},{Space 3}SetCtrlZ(){Left}    ;used for setting ctrlz for a hotstring
+; :*:send`t::Send("{End}"){Space 3},SetCtrlZ(){Left}    ;used for setting ctrlz for hotstrings right here in this script
+; :*X:summ`t::SendInput("/// <summary>`n/// `n/// </summary>`n/// <param name=`"`"></param>{Up 2}")   ,SetCtrlZ(7) ;documentation?
 
 
 :*X:if`t::Send("if(){{}{Enter 2}{}}{Up 2}{End}{Left 2}")         ,SetCtrlZ(6)
@@ -124,3 +124,5 @@ Hotstring("EndChars", "")
 :*:g`t::gameObject
 :*:v`t::Vector
 :*:f`t::float
+
+
